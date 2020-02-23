@@ -2,8 +2,9 @@ import React from 'react'
 import ReactFullpage from '@fullpage/react-fullpage';
 
 import MyFont from '../components/font.js';
-import MyBackground from '../components/background.js';
+import { MyBackground, BackgroundAnimation } from '../components/background.js';
 import Homepage from '../components/homepage/homepage.js';
+import Navigation from '../components/nav.js';
 
 class Home extends React.Component {
   componentDidMount () {
@@ -13,6 +14,7 @@ class Home extends React.Component {
 
   render () {
     return (
+      <>
       <ReactFullpage
  
         licenseKey = {'1403168F-F2F146E3-9D05AA83-872631F1'}
@@ -27,6 +29,9 @@ class Home extends React.Component {
           )
         }}
       />
+      <Navigation/>
+      <BackgroundAnimation/>
+      </>
     )
   }
 }
