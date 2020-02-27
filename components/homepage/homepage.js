@@ -8,6 +8,10 @@ import ParticleOptions from "../particle-options"
 import { Logo } from "./logo"
 
 class Homepage extends React.Component {
+    constructor() {
+        super()
+        this.description = null;
+    }
 
     render () {
         return (
@@ -34,6 +38,7 @@ class Homepage extends React.Component {
                             top:0;
                             width:100%;
                             height:100%;
+                            z-index: -1;
                         }
 
                         #logo {
@@ -50,10 +55,6 @@ class Homepage extends React.Component {
                             margin: 0 auto;
                         }
 
-                        .after-initial-load {
-                            margin: 0 !important;
-                        }
-
                         .svg-after-initial-load {
                             animation: fadein 0.5s ease-out;
                             opacity: 1 !important;
@@ -63,7 +64,7 @@ class Homepage extends React.Component {
 
                         @keyframes fadein {
                             0% { height: 0; opacity: 0; }
-                            50% { height: 120px; opacity: 0.8; }
+                            60% { height: 80px; opacity: 0.5; }
                             100% { height: 160px; opacity: 1; }
                         }
                     `}

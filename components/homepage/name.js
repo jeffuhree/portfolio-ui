@@ -1,27 +1,41 @@
 import Typewriter from 'typewriter-effect';
-import { Tween, SplitLetters } from 'react-gsap';
-
-var TitleName = ""
-
-function onTypingComplete() {
-    document.getElementsByClassName('desc-wrapper')[0].classList.add("render-complete");
-}
+import { TweenMax, TimelineLite } from 'gsap';
 
 class Name extends React.Component {
+    constructor() {
+        super()
+        this.TitleName = "";
+        this.Description = "";
+
+    }
+
     componentDidMount() {
         if  (document.documentElement.clientWidth <= 800) {
-            TitleName = "jeff";
+            this.TitleName = "jeff";
+            this.Description = "coder, innovator and food lover."
         } else if (document.documentElement.clientWidth <= 1200) {
-            TitleName = "jeffrey";
+            this.TitleName = "jeffrey";
+            this.Description = "code writer, critical thinker and food lover."
         } else {
-            TitleName = "jeffrey lin";
+            this.TitleName = "jeffrey lin";
+            this.Description = "a human; code writer, critical thinker and food lover."
         }
+    }
 
-        setTimeout(
-            function() { 
-                document.getElementsByClassName('name-wrapper')[0].style.display = "inline-flex";
-            }, 
-        5100);
+    setToVisible() {
+        document.getElementsByClassName('name-wrapper')[0].style.display = "inline-flex";
+    }
+
+    onTypingComplete() { // invoke description animation
+        const descriptionWrapper = document.getElementsByClassName('desc-wrapper')[0]
+        descriptionWrapper.style.display = "inline-flex"
+
+        TweenMax.to(descriptionWrapper, 2, {opacity: 1})
+        
+        var timeline = new TimelineLite()
+        timeline.to("#titlepage-definition", 3, {text: this.Description})
+        timeline.to("#main-nav-icon", 2, {opacity: 1, display: "block"})
+        
     }
 
     render () {
@@ -35,8 +49,13 @@ class Name extends React.Component {
                             cursor: "."
                             }}
                             onInit={(typewriter) => {
-                                typewriter.pauseFor(5000).typeString(TitleName).callFunction(() => {
-                                        onTypingComplete()
+                                typewriter.pauseFor(6000)
+                                    .callFunction(() => {
+                                        this.setToVisible()
+                                    })
+                                    .typeString(this.TitleName)
+                                    .callFunction(() => {
+                                        this.onTypingComplete()
                                     }).start()
                             }}
                         />

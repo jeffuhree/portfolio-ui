@@ -4,7 +4,7 @@ import ReactFullpage from '@fullpage/react-fullpage';
 import MyFont from '../components/font.js';
 import { MyBackground, BackgroundAnimation } from '../components/background.js';
 import Homepage from '../components/homepage/homepage.js';
-import Navigation from '../components/nav.js';
+import { Navigation, NavigationIcon } from '../components/nav.js';
 
 class Home extends React.Component {
   componentDidMount () {
@@ -22,14 +22,26 @@ class Home extends React.Component {
         verticallyCentered = {true}
     
         render={({ state, fullpageApi }) => {
+          var navComponent = (<></>)
+          if (state.initialized) {
+            navComponent = (
+              <>
+              <NavigationIcon/>
+              <Navigation state={state} fullpageApi={fullpageApi}/>
+              </>
+            )
+          }
+
           return (
+            <>
             <ReactFullpage.Wrapper>
               <Homepage/>
             </ReactFullpage.Wrapper>
+            {navComponent}
+            </>
           )
         }}
       />
-      <Navigation/>
       <BackgroundAnimation/>
       </>
     )

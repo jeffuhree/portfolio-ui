@@ -24,21 +24,6 @@ class Description extends React.Component {
 
                             opacity: 0;
                         }
-
-                        .render-complete {
-                            display: inline-flex;
-                            opacity: 1;
-                            animation: reveal 2s;
-                        }
-                          
-                        @keyframes reveal {
-                            0% {
-                                opacity: 0;
-                            }
-                            100% {
-                                opacity: 1;
-                            }
-                        }
                     `}
                 </style>
             </>
