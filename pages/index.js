@@ -7,13 +7,29 @@ import Homepage from '../components/homepage/homepage.js';
 import { Navigation, NavigationIcon } from '../components/nav.js';
 
 class Home extends React.Component {
+  constructor() {
+    super()
+    this.navComponent = null
+
+    this.afterFullpageRender = this.afterFullpageRender.bind(this)
+  }
+
   componentDidMount () {
     MyFont()
     MyBackground()
   }
 
+  afterFullpageRender() {
+    this.navComponent = (
+      <>
+      <NavigationIcon/>
+      <Navigation fullpageApi={fullpage_api}/>
+      </>
+    )
+    this.forceUpdate()
+  }
+
   render () {
-    var navComponent = null
     return (
       <>
       <ReactFullpage
@@ -21,18 +37,9 @@ class Home extends React.Component {
         licenseKey = {'1403168F-F2F146E3-9D05AA83-872631F1'}
         scrollingSpeed = {1000}
         verticallyCentered = {true}
-        navigation
+        afterRender={() => { this.afterFullpageRender()} }
     
         render={({ state, fullpageApi }) => {
-          if (state.initialized) {
-            navComponent = (
-              <>
-              <NavigationIcon/>
-              <Navigation state={state} fullpageApi={fullpageApi}/>
-              </>
-            )
-          }
-
           return (
             <>
             <ReactFullpage.Wrapper>
@@ -42,12 +49,12 @@ class Home extends React.Component {
               <div className="section"></div>
               <div className="section"></div>
             </ReactFullpage.Wrapper>
-            {navComponent}
             <BackgroundAnimation/>
             </>
           )
         }}
       />
+      {this.navComponent}
       </>
     )
   }
