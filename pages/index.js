@@ -12,6 +12,8 @@ class Home extends React.Component {
     super()
     this.navComponent = null
 
+    this.sectionMapping = ["landing-page", "about-page", "work-page", "edu-page", "project-page"]
+
     this.afterFullpageRender = this.afterFullpageRender.bind(this)
     this.onSwitchSection = this.onSwitchSection.bind(this)
   }
@@ -36,13 +38,19 @@ class Home extends React.Component {
       return false;
     }
 
-    if (direction != null) { // main menu
-      var pageNum = destination.index
-      var newHeight = window.innerHeight - pageNum * 95
-
-      TweenMax.to("#nav-" + origin.item.id, 0.5, { scale: 1 })
-      TweenMax.to("#nav-" + destination.item.id, 0.5, { scale: 2 })  
-      TweenMax.to("#main-nav", 1, { height: newHeight, marginTop: "auto"})
+    var pageNum = destination.index
+    var newHeight = window.innerHeight - pageNum * 95
+    TweenMax.to("#main-nav", 1, { height: newHeight, marginTop: "auto"})
+    
+    for (const [i, sec] of this.sectionMapping.entries()) {
+      var computedOpacity = 1 - (Math.abs(pageNum - i) * 0.2)
+      if (origin.item.id == sec) {
+        TweenMax.to("#nav-" + sec, 0.5, { scale: 1, opacity: computedOpacity })
+      } else if (destination.item.id == sec) {
+        TweenMax.to("#nav-" + sec, 0.5, { scale: 2, opacity: computedOpacity })    
+      } else {
+        TweenMax.to("#nav-" + sec, 0.5, { opacity: computedOpacity })
+      }
     }
 
     if (document.getElementById("main-nav-icon").style.display != "" && document.getElementById("main-nav-icon").style.display != "none") {
@@ -51,6 +59,7 @@ class Home extends React.Component {
   }
 
   render () {
+    console.log("Rendering...")
     return (
       <>
       <ReactFullpage
@@ -71,12 +80,12 @@ class Home extends React.Component {
               <div id="edu-page" className="section"></div>
               <div id="project-page" className="section"></div>
             </ReactFullpage.Wrapper>
-            <BackgroundAnimation/>
             </>
           )
         }}
       />
       {this.navComponent}
+      <BackgroundAnimation/>
       </>
     )
   }

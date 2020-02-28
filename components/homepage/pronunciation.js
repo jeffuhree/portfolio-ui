@@ -1,4 +1,4 @@
-import { gsap, TweenMax } from "gsap"
+import { gsap } from "gsap"
 import TextPlugin from "gsap/dist/TextPlugin"
 
 gsap.registerPlugin(TextPlugin);

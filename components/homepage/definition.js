@@ -1,5 +1,3 @@
-import Typewriter from 'typewriter-effect';
-
 class Definition extends React.Component {
 
     render () {
