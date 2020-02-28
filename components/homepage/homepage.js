@@ -15,7 +15,7 @@ class Homepage extends React.Component {
 
     render () {
         return (
-            <div className="section">
+            <div id="landing-page" className="section">
                 <MyHead/>
                 <div className="content">
                     <Logo/>
