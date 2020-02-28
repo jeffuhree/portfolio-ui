@@ -12,7 +12,7 @@ const ParticleOptions = {
             "opacity": 0.1
         },
         "move": {
-            "direction": "right",
+            "random": true,
             "speed": 0.05
         },
         "size": {
@@ -26,20 +26,7 @@ const ParticleOptions = {
             }
         }
     },
-    "interactivity": {
-        "events": {
-            "onclick": {
-                "enable": true,
-                "mode": "push"
-            }
-        },
-        "modes": {
-            "push": {
-                "particles_nb": 1
-            }
-        }
-    },
-    "retina_detect": true,
+    "retina_detect": true
 }
 
 export default ParticleOptions
