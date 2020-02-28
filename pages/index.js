@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactFullpage from '@fullpage/react-fullpage';
+import { TweenMax } from "gsap"
 
 import MyFont from '../components/font.js';
 import { MyBackground, BackgroundAnimation } from '../components/background.js';
@@ -12,6 +13,7 @@ class Home extends React.Component {
     this.navComponent = null
 
     this.afterFullpageRender = this.afterFullpageRender.bind(this)
+    this.onSwitchSection = this.onSwitchSection.bind(this)
   }
 
   componentDidMount () {
@@ -29,6 +31,25 @@ class Home extends React.Component {
     this.forceUpdate()
   }
 
+  onSwitchSection(origin, destination, direction) {
+    if (document.getElementById("main-nav-icon").style.display == "" && document.getElementById("main-nav").style.display == "") { // block scrolling when playing intro
+      return false;
+    }
+
+    if (direction != null) { // main menu
+      var pageNum = destination.index
+      var newHeight = window.innerHeight - pageNum * 95
+
+      TweenMax.to("#nav-" + origin.item.id, 0.5, { scale: 1 })
+      TweenMax.to("#nav-" + destination.item.id, 0.5, { scale: 2 })  
+      TweenMax.to("#main-nav", 1, { height: newHeight, marginTop: "auto"})
+    }
+
+    if (document.getElementById("main-nav-icon").style.display != "" && document.getElementById("main-nav-icon").style.display != "none") {
+      TweenMax.fromTo("#main-nav-icon", 0.5, {rotation: 0}, {rotation: 25, repeat: 1, yoyo: true})
+    }
+  }
+
   render () {
     return (
       <>
@@ -38,16 +59,17 @@ class Home extends React.Component {
         scrollingSpeed = {1000}
         verticallyCentered = {true}
         afterRender={() => { this.afterFullpageRender()} }
+        onLeave={(origin, destination, direction) => { return this.onSwitchSection(origin, destination, direction) } }
     
         render={({ state, fullpageApi }) => {
           return (
             <>
             <ReactFullpage.Wrapper>
               <Homepage/>
-              <div className="section"></div>
-              <div className="section"></div>
-              <div className="section"></div>
-              <div className="section"></div>
+              <div id="about-page" className="section"></div>
+              <div id="work-page" className="section"></div>
+              <div id="edu-page" className="section"></div>
+              <div id="project-page" className="section"></div>
             </ReactFullpage.Wrapper>
             <BackgroundAnimation/>
             </>

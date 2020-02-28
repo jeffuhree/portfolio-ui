@@ -6,7 +6,7 @@ class Description extends React.Component {
     render () {
         return (
             <> 
-                <div className="desc-wrapper">
+                <div id="homepage-description" className="desc-wrapper">
                     <div>
                         <Pronunciation/>
                         <Definition/>

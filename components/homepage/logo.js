@@ -30,7 +30,7 @@ export class Logo extends React.Component {
                                 </Fragment>
                             }
                         >                          
-                            <Tween from={{ opacity: 0, svgDraw: 0 }} to={{ opacity: 1, svgDraw: 1 }} duration={1.5}/>
+                            <Tween from={{ opacity: 0, svgDraw: 0 }} to={{ opacity: 1, svgDraw: 1 }} duration={1}/>
                             <Timeline>
                                 <Tween from={{ opacity: 0 }} to={{ opacity: 1 }} duration={1}>
                                     <path clipPath="url(#j-clip)" stroke="#fff" strokeLinecap="round" strokeWidth="150" d="M398.98 272.63 398.98 509.82 364.35 548.32 343.06 553.82 310.41 548.22"/>
@@ -40,12 +40,12 @@ export class Logo extends React.Component {
                                 </Tween>
                             </Timeline>
                             <Tween from={{ opacity: 1, svgDraw: 1 }} to={{ opacity: 0, svgDraw: 0 }} duration={0.5}/>
-                            <Tween from={{ opacity: 0, svgDraw: [0, 0.5], }} to={{ opacity: 1, svgDraw: [1, 0], }} delay={1} duration={1.5} ease="Strong.easeOut"/>
+                            <Tween from={{ opacity: 0, svgDraw: [0, 0.5], }} to={{ opacity: 1, svgDraw: [1, 0], }} delay={1} duration={1} ease="Strong.easeOut"/>
                         </Timeline>
                     </svg>
                 }
             >          
-                <Tween to={{height: 0, opacity: 0}} delay={4.225} duration={1} ease={"Strong.easeOut"}
+                <Tween to={{height: 0, opacity: 0}} delay={3.725} duration={1} ease={"Strong.easeOut"}
                     onComplete={
                         function() {
                             document.getElementById('primary-logo').style.margin = "0"

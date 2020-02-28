@@ -50,7 +50,7 @@ class Name extends React.Component {
                             delay: 75
                             }}
                             onInit={(typewriter) => {
-                                typewriter.pauseFor(5000)
+                                typewriter.pauseFor(4500)
                                     .callFunction(() => {
                                         this.setToVisible()
                                     })
