@@ -30,10 +30,10 @@ class Name extends React.Component {
         const descriptionWrapper = document.getElementsByClassName('desc-wrapper')[0]
         descriptionWrapper.style.display = "inline-flex"
 
-        TweenMax.to(descriptionWrapper, 2, {opacity: 1})
+        TweenMax.to(descriptionWrapper, 1.5, {opacity: 1})
         
         var timeline = new TimelineLite()
-        timeline.to("#titlepage-definition", 3, {text: this.Description})
+        timeline.to("#titlepage-definition", 2.5, {text: this.Description})
         timeline.to("#main-nav-icon", 2, {opacity: 1, display: "block"})
         
     }
@@ -49,7 +49,7 @@ class Name extends React.Component {
                             cursor: "."
                             }}
                             onInit={(typewriter) => {
-                                typewriter.pauseFor(6000)
+                                typewriter.pauseFor(5000)
                                     .callFunction(() => {
                                         this.setToVisible()
                                     })

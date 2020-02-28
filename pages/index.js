@@ -9,10 +9,11 @@ import { Navigation, NavigationIcon } from '../components/nav.js';
 class Home extends React.Component {
   componentDidMount () {
     MyFont()
-    MyBackground() // TO DO: animated background with color changes
+    MyBackground()
   }
 
   render () {
+    var navComponent = null
     return (
       <>
       <ReactFullpage
@@ -20,9 +21,9 @@ class Home extends React.Component {
         licenseKey = {'1403168F-F2F146E3-9D05AA83-872631F1'}
         scrollingSpeed = {1000}
         verticallyCentered = {true}
+        navigation
     
         render={({ state, fullpageApi }) => {
-          var navComponent = (<></>)
           if (state.initialized) {
             navComponent = (
               <>
@@ -36,13 +37,17 @@ class Home extends React.Component {
             <>
             <ReactFullpage.Wrapper>
               <Homepage/>
+              <div className="section"></div>
+              <div className="section"></div>
+              <div className="section"></div>
+              <div className="section"></div>
             </ReactFullpage.Wrapper>
             {navComponent}
+            <BackgroundAnimation/>
             </>
           )
         }}
       />
-      <BackgroundAnimation/>
       </>
     )
   }

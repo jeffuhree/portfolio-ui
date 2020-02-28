@@ -15,14 +15,14 @@ export class NavigationIcon extends React.Component {
     hover() {
         if (!this.clickedState) {
             TweenMax.killTweensOf("#main-nav-icon")
-            TweenMax.to("#main-nav-icon", 0.5, {opacity: 1, rotate: 25})
+            TweenMax.to("#main-nav-icon", 0.5, {scale: 1, opacity: 1, rotate: 25})
         }
     }
 
     unhover() {
         if (!this.clickedState) {
             TweenMax.killTweensOf("#main-nav-icon")
-            TweenMax.to("#main-nav-icon", 1, {opacity: 1, rotate: -25})
+            TweenMax.to("#main-nav-icon", 1, {scale: 1, opacity: 1, rotate: -25})
         }
     }
 
@@ -52,6 +52,7 @@ export class NavigationIcon extends React.Component {
     }
 
     render () {
+        const halfHeight = window.innerHeight / 2
         return (
             <>
             <div id="main-nav-icon"
@@ -67,7 +68,7 @@ export class NavigationIcon extends React.Component {
                     position: fixed;
                     zIndex: 1001;
                     right: 0;
-                    top: 50%;
+                    top: ${halfHeight}px;
 
                     transform: translate(0, -75px);
                     margin: 70px;
@@ -91,11 +92,6 @@ export class Navigation extends React.Component {
         this.work = null;
         this.education = null;
         this.projects = null;
-
-    }
-
-    componentDidMount() {
-        console.log(this.props.fullpageApi.getActiveSection())
     }
 
     onHover(button) {
@@ -129,14 +125,15 @@ export class Navigation extends React.Component {
     }
 
     render () { 
+        const halfHeight = window.innerHeight / 2
         return (
             <>
-            <div id="main-nav" className="navbar nb-home"
+            <nav id="main-nav" className="navbar nb-home"
                 onMouseLeave={ this.onUnhoverNav }
             >
                 <ul>
                     <li className="active">
-                        <a href=""> 
+                        <a onClick={ () => this.props.fullpageApi.moveTo(1) }> 
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" 
                                 ref={e => this.home = e} onMouseEnter={() => { this.onHover(this.home) }} onMouseLeave={() => { this.onUnhover(this.home) }} 
                             >
@@ -145,7 +142,7 @@ export class Navigation extends React.Component {
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a onClick={ () => this.props.fullpageApi.moveTo(2) }> 
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
                                 ref={e => this.about = e} onMouseEnter={() => { this.onHover(this.about) }} onMouseLeave={() => { this.onUnhover(this.about) }}
                             >
@@ -154,7 +151,7 @@ export class Navigation extends React.Component {
                         </a>
                     </li>           
                     <li>
-                        <a href="">
+                        <a onClick={ () => this.props.fullpageApi.moveTo(3) }> 
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
                                 ref={e => this.work = e} onMouseEnter={() => { this.onHover(this.work) }} onMouseLeave={() => { this.onUnhover(this.work) }}
                             >
@@ -163,7 +160,7 @@ export class Navigation extends React.Component {
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a onClick={ () => this.props.fullpageApi.moveTo(4) }> 
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                                 ref={e => this.education = e} onMouseEnter={() => { this.onHover(this.education) }} onMouseLeave={() => { this.onUnhover(this.education) }}
                             >
@@ -172,7 +169,7 @@ export class Navigation extends React.Component {
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a onClick={ () => this.props.fullpageApi.moveTo(5) }> 
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                                 ref={e => this.projects = e} onMouseEnter={() => { this.onHover(this.projects) }} onMouseLeave={() => { this.onUnhover(this.projects) }}
                             >
@@ -181,7 +178,7 @@ export class Navigation extends React.Component {
                         </a>
                     </li>
                 </ul>
-            </div>
+            </nav>
 
             <style jsx>{`
 
@@ -201,7 +198,7 @@ export class Navigation extends React.Component {
                 }
 
                 .nb-home {
-                    top: calc(50% - 60px);
+                    top: calc(${halfHeight}px - 60px);
                 }
 
                 ul {

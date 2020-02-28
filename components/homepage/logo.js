@@ -35,7 +35,7 @@ export class Logo extends React.Component {
                                 <Tween from={{ opacity: 0 }} to={{ opacity: 1 }} duration={1}>
                                     <path clipPath="url(#j-clip)" stroke="#fff" strokeLinecap="round" strokeWidth="150" d="M398.98 272.63 398.98 509.82 364.35 548.32 343.06 553.82 310.41 548.22"/>
                                 </Tween>
-                                <Tween from={{ opacity: 0, svgDraw: 0 }} to={{ opacity: 1, svgDraw: 1 }} duration={2}>
+                                <Tween from={{ opacity: 0, svgDraw: 0 }} to={{ opacity: 1, svgDraw: 1 }} duration={1.5}>
                                     <path clipPath="url(#l-clip)" stroke="#f1c85f" strokeLinecap="round" strokeWidth="150" d="M267.9 191.91 267.9 417.97 423.09 473.39 485.09 478.66 538.53 452.9"/>
                                 </Tween>
                             </Timeline>
@@ -45,7 +45,7 @@ export class Logo extends React.Component {
                     </svg>
                 }
             >          
-                <Tween to={{height: 0, opacity: 0}} delay={4.725} duration={1} ease={"Strong.easeOut"}
+                <Tween to={{height: 0, opacity: 0}} delay={4.225} duration={1} ease={"Strong.easeOut"}
                     onComplete={
                         function() {
                             document.getElementById('primary-logo').style.margin = "0"
