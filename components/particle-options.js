@@ -17,7 +17,7 @@ const ParticleOptions = {
             "value": 1
         },
         "opacity": {
-            "value": 0.8,
+            "value": 1,
             "random": true
         }
     },

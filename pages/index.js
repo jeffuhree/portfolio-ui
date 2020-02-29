@@ -10,7 +10,8 @@ import { Navigation, NavigationIcon } from '../components/nav.js';
 class Home extends React.Component {
   state = {
     fullpageApi: null,
-    windowHeight: 0
+    windowHeight: 0,
+    navOpacity: [1, 0.8, 0.6, 0.4, 0.2]
   }
 
   constructor() {
@@ -41,17 +42,26 @@ class Home extends React.Component {
     }
 
     var pageNum = destination.index
+
+    var opacities = []
+    for (var i = 0; i < 5; ++i) {
+      opacities.push(1 - (Math.abs(pageNum - i) * 0.2))
+    }
+    this.setState({
+      navOpacity: opacities
+    })
+
     var newHeight = window.innerHeight - pageNum * 95
     TweenMax.to("#main-nav", 1, { height: newHeight, marginTop: "auto"})
-    
+
     for (const [i, sec] of this.sectionMapping.entries()) {
-      var computedOpacity = 1 - (Math.abs(pageNum - i) * 0.2)
+      const element = document.getElementById("nav-" + sec)
       if (origin.item.id == sec) {
-        TweenMax.to("#nav-" + sec, 0.5, { scale: 1, opacity: computedOpacity })
+        TweenMax.to(element, 0.5, { scale: 1, opacity: opacities[i] })
       } else if (destination.item.id == sec) {
-        TweenMax.to("#nav-" + sec, 0.5, { scale: 2, opacity: computedOpacity })    
+        TweenMax.to(element, 0.5, { scale: 2, opacity: opacities[i] })
       } else {
-        TweenMax.to("#nav-" + sec, 0.5, { opacity: computedOpacity })
+        TweenMax.to(element, 0.5, { opacity: opacities[i] })
       }
     }
 
@@ -86,7 +96,7 @@ class Home extends React.Component {
         }}
       />
       <NavigationIcon windowHeight={this.state.windowHeight}/>
-      <Navigation windowHeight={this.state.windowHeight} fullpageApi={this.state.fullpageApi}/>
+      <Navigation opacities={this.state.navOpacity} windowHeight={this.state.windowHeight} fullpageApi={this.state.fullpageApi}/>
       <BackgroundAnimation/>
       </>
     )
