@@ -24,7 +24,7 @@ export class Logo extends React.Component {
 
                         <Timeline
                             target={
-                                <Fragment>
+                                <Fragment style={{opacity:0}}>
                                     <path clipPath="url(#r-rect-clip)" stroke="#f1c85f" strokeLinecap="round" strokeWidth="150" d="M355.11 1.35 0.71 355.76 357.03 712.08"/>
                                     <path clipPath="url(#l-rect-clip)" stroke="#fff" strokeLinecap="round" strokeWidth="150" d="M371.01 711.08 725.41 356.67 369.09 0.35"/>
                                 </Fragment>
@@ -33,10 +33,10 @@ export class Logo extends React.Component {
                             <Tween from={{ opacity: 0, svgDraw: 0 }} to={{ opacity: 1, svgDraw: 1 }} duration={1}/>
                             <Timeline>
                                 <Tween from={{ opacity: 0 }} to={{ opacity: 1 }} duration={1}>
-                                    <path clipPath="url(#j-clip)" stroke="#fff" strokeLinecap="round" strokeWidth="150" d="M398.98 272.63 398.98 509.82 364.35 548.32 343.06 553.82 310.41 548.22"/>
+                                    <path style={{opacity:0}} clipPath="url(#j-clip)" stroke="#fff" strokeLinecap="round" strokeWidth="150" d="M398.98 272.63 398.98 509.82 364.35 548.32 343.06 553.82 310.41 548.22"/>
                                 </Tween>
                                 <Tween from={{ opacity: 0, svgDraw: 0 }} to={{ opacity: 1, svgDraw: 1 }} duration={1.5}>
-                                    <path clipPath="url(#l-clip)" stroke="#f1c85f" strokeLinecap="round" strokeWidth="150" d="M267.9 191.91 267.9 417.97 423.09 473.39 485.09 478.66 538.53 452.9"/>
+                                    <path style={{opacity:0}} clipPath="url(#l-clip)" stroke="#f1c85f" strokeLinecap="round" strokeWidth="150" d="M267.9 191.91 267.9 417.97 423.09 473.39 485.09 478.66 538.53 452.9"/>
                                 </Tween>
                             </Timeline>
                             <Tween from={{ opacity: 1, svgDraw: 1 }} to={{ opacity: 0, svgDraw: 0 }} duration={0.5}/>
