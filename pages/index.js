@@ -9,7 +9,8 @@ import { Navigation, NavigationIcon } from '../components/nav.js';
 
 class Home extends React.Component {
   state = {
-    fullpageApi: null
+    fullpageApi: null,
+    windowHeight: 0
   }
 
   constructor() {
@@ -29,7 +30,8 @@ class Home extends React.Component {
 
   afterFullpageRender() {
     this.setState({
-      fullpageApi: fullpage_api
+      fullpageApi: fullpage_api,
+      windowHeight: window.innerHeight
     });
   }
 
@@ -83,8 +85,8 @@ class Home extends React.Component {
           )
         }}
       />
-      <NavigationIcon/>
-      <Navigation fullpageApi={this.state.fullpageApi}/>
+      <NavigationIcon windowHeight={this.state.windowHeight}/>
+      <Navigation windowHeight={this.state.windowHeight} fullpageApi={this.state.fullpageApi}/>
       <BackgroundAnimation/>
       </>
     )

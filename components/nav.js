@@ -55,7 +55,7 @@ export class NavigationIcon extends React.Component {
     }
 
     render () {
-        const halfHeight = (typeof window !== 'undefined'? window.innerHeight : 0) / 2
+        const halfHeight = this.props.windowHeight / 2
         return (
             <>
             <div id="main-nav-icon"
@@ -122,7 +122,7 @@ export class Navigation extends React.Component {
     }
 
     render () { 
-        const halfHeight = (typeof window !== 'undefined'? window.innerHeight : 0) / 2
+        const halfHeight = this.props.windowHeight / 2
         return (
             <>
             <nav id="main-nav" className="navbar"
