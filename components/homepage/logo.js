@@ -24,9 +24,9 @@ export class Logo extends React.Component {
 
                         <Timeline
                             target={
-                                <Fragment style={{opacity:0}}>
-                                    <path clipPath="url(#r-rect-clip)" stroke="#f1c85f" strokeLinecap="round" strokeWidth="150" d="M355.11 1.35 0.71 355.76 357.03 712.08"/>
-                                    <path clipPath="url(#l-rect-clip)" stroke="#fff" strokeLinecap="round" strokeWidth="150" d="M371.01 711.08 725.41 356.67 369.09 0.35"/>
+                                <Fragment >
+                                    <path style={{opacity:0}} clipPath="url(#r-rect-clip)" stroke="#f1c85f" strokeLinecap="round" strokeWidth="150" d="M355.11 1.35 0.71 355.76 357.03 712.08"/>
+                                    <path style={{opacity:0}} clipPath="url(#l-rect-clip)" stroke="#fff" strokeLinecap="round" strokeWidth="150" d="M371.01 711.08 725.41 356.67 369.09 0.35"/>
                                 </Fragment>
                             }
                         >                          

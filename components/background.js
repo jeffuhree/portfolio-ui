@@ -33,6 +33,10 @@ export class BackgroundAnimation extends React.Component {
           background-color: #010101;
         }
       }
+
+      html {
+        background-color: #010101;
+      }
     `}</style>
     )
   }
