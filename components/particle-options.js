@@ -1,28 +1,27 @@
 const ParticleOptions = {
     "particles": {
         "number": {
-            "value": 100,
+            "value": 30,
             "density": {
                 "enable": true,
                 "value_area": 1500
             }
         },
         "line_linked": {
-            "enable": true,
-            "opacity": 0.1
+            "enable": false,
         },
         "move": {
-            "random": true,
-            "speed": 0.05
+            "enable": true,
+            "speed": 0.25
         },
         "size": {
-            "value": 1
+            "value": 1.2
         },
         "opacity": {
             "anim": {
                 "enable": true,
                 "speed": 1,
-                "opacity_min": 0.05
+                "opacity_min": 0.1
             }
         }
     },
