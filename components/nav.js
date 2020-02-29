@@ -1,4 +1,5 @@
 import { TweenMax, TimelineLite } from "gsap"
+import windowSize from 'react-window-size';
 
 export class NavigationIcon extends React.Component {
     constructor() {
@@ -22,7 +23,8 @@ export class NavigationIcon extends React.Component {
     unhover() {
         if (!this.clickedState) {
             TweenMax.killTweensOf("#main-nav-icon")
-            TweenMax.to("#main-nav-icon", 1, {scale: 1, opacity: 1, rotate: -45})        }
+            TweenMax.to("#main-nav-icon", 1, {scale: 1, opacity: 1, rotate: -45})        
+        }
     }
 
     click() {
@@ -53,7 +55,7 @@ export class NavigationIcon extends React.Component {
     }
 
     render () {
-        const halfHeight = window.innerHeight / 2
+        const halfHeight = (typeof window !== 'undefined'? window.innerHeight : 0) / 2
         return (
             <>
             <div id="main-nav-icon"
@@ -120,7 +122,7 @@ export class Navigation extends React.Component {
     }
 
     render () { 
-        const halfHeight = window.innerHeight / 2
+        const halfHeight = (typeof window !== 'undefined'? window.innerHeight : 0) / 2
         return (
             <>
             <nav id="main-nav" className="navbar"

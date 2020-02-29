@@ -11,18 +11,14 @@ const ParticleOptions = {
             "enable": false,
         },
         "move": {
-            "enable": true,
-            "speed": 0.25
+            "enable": false,
         },
         "size": {
-            "value": 1.2
+            "value": 1
         },
         "opacity": {
-            "anim": {
-                "enable": true,
-                "speed": 1,
-                "opacity_min": 0.1
-            }
+            "value": 0.8,
+            "random": true
         }
     },
     "retina_detect": true

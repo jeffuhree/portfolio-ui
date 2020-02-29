@@ -8,6 +8,10 @@ import Homepage from '../components/homepage/homepage.js';
 import { Navigation, NavigationIcon } from '../components/nav.js';
 
 class Home extends React.Component {
+  state = {
+    fullpageApi: null
+  }
+
   constructor() {
     super()
     this.navComponent = null
@@ -24,13 +28,9 @@ class Home extends React.Component {
   }
 
   afterFullpageRender() {
-    this.navComponent = (
-      <>
-      <NavigationIcon/>
-      <Navigation fullpageApi={fullpage_api}/>
-      </>
-    )
-    this.forceUpdate()
+    this.setState({
+      fullpageApi: fullpage_api
+    });
   }
 
   onSwitchSection(origin, destination, direction) {
@@ -59,7 +59,6 @@ class Home extends React.Component {
   }
 
   render () {
-    console.log("Rendering...")
     return (
       <>
       <ReactFullpage
@@ -84,7 +83,8 @@ class Home extends React.Component {
           )
         }}
       />
-      {this.navComponent}
+      <NavigationIcon/>
+      <Navigation fullpageApi={this.state.fullpageApi}/>
       <BackgroundAnimation/>
       </>
     )
