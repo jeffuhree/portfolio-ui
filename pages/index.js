@@ -46,10 +46,12 @@ class Home extends React.Component {
     MyBackground()
 
     window.addEventListener('resize', this.handleResize); 
+    window.addEventListener("orientationchange", this.handleResize);
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.handleResize); 
+    window.removeEventListener("orientationchange", this.handleResize);
   }
 
   afterFullpageRender() {
