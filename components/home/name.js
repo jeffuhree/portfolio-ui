@@ -8,16 +8,16 @@ class Name extends React.Component {
         this.Description = "a human; code writer, critical thinker and food lover."
     }
 
-    componentWillUpdate() {
-        // if  (this.props.windowSize[0] <= 800) {
-        //     this.Description = "coder, innovator and food lover."
-        // } else if (this.props.windowSize[0] <= 1300) {
-        //     this.Description = "code writer, critical thinker and food lover."
-        // } else {
-        //     this.Description = "a human; code writer, critical thinker and food lover."
-        // }
-        // this.onTypingComplete()
-    }
+    // componentWillUpdate() {
+    //     if  (this.props.windowSize[0] <= 800) {
+    //         this.Description = "coder, innovator and food lover."
+    //     } else if (this.props.windowSize[0] <= 1300) {
+    //         this.Description = "code writer, critical thinker and food lover."
+    //     } else {
+    //         this.Description = "a human; code writer, critical thinker and food lover."
+    //     }
+    //     this.onTypingComplete()
+    // }
 
     setToVisible() {
         document.getElementsByClassName('name-wrapper')[0].style.display = "inline-flex";

@@ -12,26 +12,29 @@ class Information extends React.Component {
     }
 
     onMouseoverDiamond() {
-        TweenMax.to("#diamond-icon", 0.5, {fill: "#89cff0"})
-        TweenMax.to("#footer-expand-icon", 0.5, {scale: 1.2})
+        if (document.getElementById("footer-body").style.display == "none" || document.getElementById("footer-body").style.display == "") {
+            TweenMax.to("#diamond-icon", 0.5, {fill: "#89cff0"})
+            TweenMax.to("#footer-expand-icon", 0.5, {scale: 1.2})
+        }
     }
 
     onMouseleaveDiamond() {
-        if (!document.getElementById("footer-expand-icon").style.display == "inline-block") {
+        if (document.getElementById("footer-body").style.display == "none" || document.getElementById("footer-body").style.display == "") {
             TweenMax.to("#diamond-icon", 0.5, {fill: "#efefef"})
             TweenMax.to("#footer-expand-icon", 0.5, {scale: 1})
         }
     }
 
     onClickDiamond() {
-        document.getElementById("footer-expand-icon").style.display = "inline-block"
+        document.getElementById("footer-body").style.display = "flex"
         TweenMax.to("#footer-expand-icon", 0.5, {scale: 0})
         TweenMax.to("#footer-body", 0.5, {translateX: "-15px", opacity: 0.8})
     }
 
     onMouseleaveBody() {
-        TweenMax.to("#footer-expand-icon", 0.5, {scale: 1, display: "block"})
+        TweenMax.to("#footer-expand-icon", 0.5, {scale: 1})
         TweenMax.to("#footer-body", 0.5, {translateX: "0px", opacity: 0})
+        setTimeout(() => document.getElementById("footer-body").style.display = "none", 500)
     }
 
     render() {
@@ -84,7 +87,7 @@ class Information extends React.Component {
 
                     #footer-body {
                         margin: auto;
-                        display: flex;
+                        display: none;
                         align-items: stretch;
 
                         opacity: 0;
