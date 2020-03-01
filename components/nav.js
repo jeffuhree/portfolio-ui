@@ -100,17 +100,19 @@ export class Navigation extends React.Component {
     onMouseover(index) {
         const tweenElement = this.nav[index-1].children[0].children[0]
         if (this.props.fullpageApi.getActiveSection().index == index - 1) {
-            TweenMax.to(tweenElement, 0.5, {translateX: "-2.5px"})
+            TweenMax.to(tweenElement, 0.5, {translateX: "-1px"})
         } else {
             TweenMax.to(tweenElement, 0.5, {translateX: "-5px", opacity: 1})
-            TweenMax.to(tweenElement.children[0], 0.5, {fill: "#fa8072"})
         }
+        TweenMax.to(tweenElement.children[0], 0.5, {fill: "#fa8072"})
     }
 
     onMouseleave(index) {
         const tweenElement = this.nav[index-1].children[0].children[0]
         TweenMax.to(tweenElement, 0.5, {translateX: "0px", opacity: this.props.opacities[index-1]})
-        TweenMax.to(tweenElement.children[0], 0.5, {fill: "#efefef"})
+        if (this.props.fullpageApi.getActiveSection().index != index - 1) {
+            TweenMax.to(tweenElement.children[0], 0.5, {fill: "#efefef"})
+        }
     }
 
     onUnhoverNav() {
@@ -146,8 +148,8 @@ export class Navigation extends React.Component {
                 <ul id="nav-inner">
                     <li ref={el => this.nav[0] = el}>
                         <a onClick={ () => this.props.fullpageApi.moveTo(1) } onMouseOver={() => this.onMouseover(1)} onMouseLeave={() => this.onMouseleave(1)}> 
-                            <svg id="nav-landing-page" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                <path fill="#efefef" d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/>
+                            <svg id="nav-landing-page" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path fill="#efefef" d="M217.76,37.92C205.44,64.24,198.4,99.36,198.4,134.4V363a54.4,54.4,0,0,0-12.8,13.36V211.2C161.36,328.64,76.8,336.48,76.8,435.2H179.2V448H76.8c0,21.2,23,38.4,51.2,38.4h51.2c0,18.56,8,25.6,19.2,25.6h32c11.2,0,19.2-7,19.2-25.6h12.8c0,18.56,8,25.6,19.2,25.6h32c11.2,0,19.2-7,19.2-25.6H384c28.24,0,51.2-17.2,51.2-38.4H332.8V435.2H435.2c0-98.72-84.56-106.56-108.8-224V376.32A53,53,0,0,0,313.6,363V134.4c0-35-7-70.16-19.36-96.48C283,14.16,268.8,0,256,0S229,14.16,217.76,37.92ZM288,121.6a6.42,6.42,0,0,1-6.4,6.4H230.4a6.42,6.42,0,0,1-6.4-6.4C224,96.08,288,96.08,288,121.6Z"/>
                             </svg>
                         </a>
                     </li>

@@ -1,11 +1,16 @@
 import React from 'react'
 import ReactFullpage from '@fullpage/react-fullpage';
+import Particles from "react-particles-js"
 import { TweenMax } from "gsap"
 
 import MyFont from '../components/font.js';
 import { MyBackground, BackgroundAnimation } from '../components/background.js';
-import Homepage from '../components/homepage/homepage.js';
+import Homepage from '../components/home/homepage.js';
 import { Navigation, NavigationIcon } from '../components/nav.js';
+import Information from '../components/info.js';
+import MyHead from '../components/head.js';
+import ParticleOptions from '../components/particle-options.js';
+import About from '../components/about/aboutpage.js';
 
 class Home extends React.Component {
   state = {
@@ -58,8 +63,10 @@ class Home extends React.Component {
       const element = document.getElementById("nav-" + sec)
       if (origin.item.id == sec) {
         TweenMax.to(element, 0.5, { scale: 1, opacity: opacities[i] })
+        TweenMax.to(element.children[0], 0.5, {fill: "#efefef"})
       } else if (destination.item.id == sec) {
         TweenMax.to(element, 0.5, { scale: 2, opacity: opacities[i] })
+        TweenMax.to(element.children[0], 0.5, {fill: "#fa8072"})
       } else {
         TweenMax.to(element, 0.5, { opacity: opacities[i] })
       }
@@ -73,6 +80,7 @@ class Home extends React.Component {
   render () {
     return (
       <>
+      <MyHead/>
       <ReactFullpage
  
         licenseKey = {'1403168F-F2F146E3-9D05AA83-872631F1'}
@@ -86,10 +94,11 @@ class Home extends React.Component {
             <>
             <ReactFullpage.Wrapper>
               <Homepage/>
-              <div id="about-page" className="section"></div>
+              <About/>
               <div id="work-page" className="section"></div>
               <div id="edu-page" className="section"></div>
               <div id="project-page" className="section"></div>
+              <Particles params = {ParticleOptions} className="particle-canvas"/>  
             </ReactFullpage.Wrapper>
             </>
           )
@@ -97,7 +106,25 @@ class Home extends React.Component {
       />
       <NavigationIcon windowHeight={this.state.windowHeight}/>
       <Navigation opacities={this.state.navOpacity} windowHeight={this.state.windowHeight} fullpageApi={this.state.fullpageApi}/>
+      <Information windowHeight={this.state.windowHeight}/>
       <BackgroundAnimation/>
+      <style jsx global>{`
+        .content {
+          padding-left: 8%;
+          padding-right: 8%;
+          display: flex;
+          align-items: stretch;
+        }
+
+        .particle-canvas {
+          position:fixed !important;
+          left:0;
+          top:0;
+          width:100%;
+          height:100%;
+          z-index: -1;
+        }
+      `}</style>
       </>
     )
   }
