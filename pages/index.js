@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactFullpage from '@fullpage/react-fullpage';
 import Particles from "react-particles-js"
+import throttle from 'lodash/throttle';
 import { TweenMax } from "gsap"
 
 import MyFont from '../components/font.js';
@@ -15,7 +16,7 @@ import About from '../components/about/aboutpage.js';
 class Home extends React.Component {
   state = {
     fullpageApi: null,
-    windowHeight: 0,
+    windowSize: [0,0],
     navOpacity: [1, 0.8, 0.6, 0.4, 0.2]
   }
 
@@ -27,17 +28,34 @@ class Home extends React.Component {
 
     this.afterFullpageRender = this.afterFullpageRender.bind(this)
     this.onSwitchSection = this.onSwitchSection.bind(this)
+    this.onResize = this.onResize.bind(this)
   }
+
+  onResize() {
+    this.setState({
+      windowSize: [window.innerWidth, window.innerHeight]
+    });
+  }
+
+  handleResize = throttle(() => {
+    this.onResize();
+  }, 500)
 
   componentDidMount () {
     MyFont()
     MyBackground()
+
+    window.addEventListener('resize', this.handleResize); 
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleResize); 
   }
 
   afterFullpageRender() {
     this.setState({
       fullpageApi: fullpage_api,
-      windowHeight: window.innerHeight
+      windowSize: [window.innerWidth, window.innerHeight]
     });
   }
 
@@ -93,7 +111,7 @@ class Home extends React.Component {
           return (
             <>
             <ReactFullpage.Wrapper>
-              <Homepage/>
+              <Homepage windowSize={this.state.windowSize}/>
               <About/>
               <div id="work-page" className="section"></div>
               <div id="edu-page" className="section"></div>
@@ -104,9 +122,9 @@ class Home extends React.Component {
           )
         }}
       />
-      <NavigationIcon windowHeight={this.state.windowHeight}/>
-      <Navigation opacities={this.state.navOpacity} windowHeight={this.state.windowHeight} fullpageApi={this.state.fullpageApi}/>
-      <Information windowHeight={this.state.windowHeight}/>
+      <NavigationIcon windowSize={this.state.windowSize}/>
+      <Navigation opacities={this.state.navOpacity} windowSize={this.state.windowSize} fullpageApi={this.state.fullpageApi}/>
+      <Information windowSize={this.state.windowSize}/>
       <BackgroundAnimation/>
       <style jsx global>{`
         .content {

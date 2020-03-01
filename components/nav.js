@@ -55,7 +55,7 @@ export class NavigationIcon extends React.Component {
     }
 
     render () {
-        const halfHeight = this.props.windowHeight / 2
+        const halfHeight = this.props.windowSize[1] / 2
         return (
             <>
             <div id="main-nav-icon"
@@ -99,9 +99,7 @@ export class Navigation extends React.Component {
 
     onMouseover(index) {
         const tweenElement = this.nav[index-1].children[0].children[0]
-        if (this.props.fullpageApi.getActiveSection().index == index - 1) {
-            TweenMax.to(tweenElement, 0.5, {translateX: "-1px"})
-        } else {
+        if (this.props.fullpageApi.getActiveSection().index != index - 1) {
             TweenMax.to(tweenElement, 0.5, {translateX: "-5px", opacity: 1})
         }
         TweenMax.to(tweenElement.children[0], 0.5, {fill: "#fa8072"})
@@ -139,7 +137,7 @@ export class Navigation extends React.Component {
     }
 
     render () { 
-        const halfHeight = this.props.windowHeight / 2
+        const halfHeight = this.props.windowSize[1] / 2
         return (
             <>
             <nav id="main-nav" className="navbar"

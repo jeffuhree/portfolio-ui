@@ -14,7 +14,7 @@ class Homepage extends React.Component {
             <div id="landing-page" className="section">
                 <div className="content">
                     <Logo/>
-                    <Name/>
+                    <Name windowSize={this.props.windowSize}/>
                     <Description/>
                 </div>
                 <style jsx global>

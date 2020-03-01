@@ -4,22 +4,19 @@ import { TweenMax, TimelineLite } from 'gsap';
 class Name extends React.Component {
     constructor() {
         super()
-        this.TitleName = "";
+        this.TitleName = "jeffrey lin";
         this.Description = "";
-
     }
 
-    componentDidMount() {
-        if  (document.documentElement.clientWidth <= 800) {
-            this.TitleName = "jeff";
+    componentWillUpdate() {
+        if  (this.props.windowSize[0] <= 800) {
             this.Description = "coder, innovator and food lover."
-        } else if (document.documentElement.clientWidth <= 1200) {
-            this.TitleName = "jeffrey";
+        } else if (this.props.windowSize[0] <= 1300) {
             this.Description = "code writer, critical thinker and food lover."
         } else {
-            this.TitleName = "jeffrey lin";
             this.Description = "a human; code writer, critical thinker and food lover."
         }
+        // this.onTypingComplete()
     }
 
     setToVisible() {
@@ -35,7 +32,7 @@ class Name extends React.Component {
         var timeline = new TimelineLite()
         timeline.to("#titlepage-definition", 2.5, {text: this.Description})
         timeline.to("#main-nav-icon", 2, {opacity: 1, display: "block"})
-        
+
     }
 
     render () {
@@ -49,8 +46,8 @@ class Name extends React.Component {
                             cursor: ".",
                             delay: 75
                             }}
-                            onInit={(typewriter) => {
-                                typewriter.pauseFor(4500)
+                            onInit={(tw) => {
+                                tw.pauseFor(4500)
                                     .callFunction(() => {
                                         this.setToVisible()
                                     })

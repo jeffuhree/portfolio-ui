@@ -76,7 +76,7 @@ class Information extends React.Component {
                         position: absolute;
                         padding: 20px;
                         left: 0;
-                        top: calc(${this.props.windowHeight}px - 80px);
+                        top: calc(${this.props.windowSize[1]}px - 80px);
 
                         display: flex;
                         align-items: stretch;
