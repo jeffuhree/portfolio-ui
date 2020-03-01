@@ -65,8 +65,8 @@ class Information extends React.Component {
                         display: inline-flex;
                         color: #efefef;
                         font-family: Assistant;
-                        font-size: 16px;
-                        font-weight: 300;
+                        font-size: 0.5em;
+                        font-weight: 200;
 
                         margin: auto 5px;
                     }

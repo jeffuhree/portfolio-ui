@@ -8,7 +8,7 @@ export class Logo extends React.Component {
             <>
             <Timeline wrapper={<div id="primary-logo" className="logo-wrapper"/>}
                 target={
-                    <svg id="logo-svg" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 757.28 735.76" style={{width: "100px"}}>
+                    <svg id="logo-svg" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 757.28 735.76" style={{width: "3em", paddingTop: "0.5em"}}>
                         <clipPath id="l-rect-clip">
                             <path d="M389.4 0 389.4 32.11 725.17 367.88 389.4 703.66 389.4 735.76 757.28 367.88 389.4 0Z" />
                         </clipPath>
@@ -45,7 +45,7 @@ export class Logo extends React.Component {
                     </svg>
                 }
             >          
-                <Tween to={{height: 0, opacity: 0}} delay={3.725} duration={1} ease={"Strong.easeOut"}
+                <Tween to={{scale: 0, opacity: 0}} delay={3.725} duration={1} ease={"Strong.easeOut"}
                     onComplete={
                         function() {
                             document.getElementById('primary-logo').style.margin = "0"

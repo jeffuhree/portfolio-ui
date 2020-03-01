@@ -5,17 +5,17 @@ class Name extends React.Component {
     constructor() {
         super()
         this.TitleName = "jeffrey lin";
-        this.Description = "";
+        this.Description = "a human; code writer, critical thinker and food lover."
     }
 
     componentWillUpdate() {
-        if  (this.props.windowSize[0] <= 800) {
-            this.Description = "coder, innovator and food lover."
-        } else if (this.props.windowSize[0] <= 1300) {
-            this.Description = "code writer, critical thinker and food lover."
-        } else {
-            this.Description = "a human; code writer, critical thinker and food lover."
-        }
+        // if  (this.props.windowSize[0] <= 800) {
+        //     this.Description = "coder, innovator and food lover."
+        // } else if (this.props.windowSize[0] <= 1300) {
+        //     this.Description = "code writer, critical thinker and food lover."
+        // } else {
+        //     this.Description = "a human; code writer, critical thinker and food lover."
+        // }
         // this.onTypingComplete()
     }
 
@@ -63,11 +63,10 @@ class Name extends React.Component {
                 {`
                     .jeffrey-lin {
                         font-family: Assistant;
-                        font-size: 80px;
+                        font-size: 3em;
                         font-weight: 200;
                         font-stretch: normal;
                         font-style: normal;
-                        line-height: 1.31;
                         letter-spacing: normal;
                         text-align: left;
                         color: #ebebeb;

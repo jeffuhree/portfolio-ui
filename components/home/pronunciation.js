@@ -19,13 +19,12 @@ class Pronunciation extends React.Component {
                 <style jsx>
                     {`
                         .pronunciation {
-                            height: 52px;
                             font-family: Assistant;
-                            font-size: 40px;
+                            font-size: 1em;
                             font-weight: 200;
                             font-stretch: normal;
                             font-style: normal;
-                            line-height: 1.3;
+                            line-height: normal;
                             letter-spacing: normal;
                             text-align: left;
                             color: #f1c85f;

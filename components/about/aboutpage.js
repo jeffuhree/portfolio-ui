@@ -21,14 +21,11 @@ class About extends React.Component {
                         }
 
                         .about-me {
-                            width: 157px;
-                            height: 52px;
                             font-family: Assistant;
-                            font-size: 40px;
+                            font-size: 1em;
                             font-weight: 200;
                             font-stretch: normal;
                             font-style: normal;
-                            line-height: 1.3;
                             letter-spacing: normal;
                             text-align: left;
                             color: #f1c85f;

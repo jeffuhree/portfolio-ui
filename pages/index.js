@@ -142,6 +142,10 @@ class Home extends React.Component {
           height:100%;
           z-index: -1;
         }
+
+        html {
+          font-size: calc(1em + 1vw);
+        }
       `}</style>
       </>
     )
