@@ -39,7 +39,7 @@ class Home extends React.Component {
 
   handleResize = throttle(() => {
     this.onResize();
-  }, 500)
+  }, 100)
 
   componentDidMount () {
     MyFont()
